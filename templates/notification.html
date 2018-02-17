@@ -27,111 +27,111 @@
 <body>
 {% block content %}
     <a href="{% url 'transport:past_notification' %}">Read Past Notification</a>
-    {% if notify_insurance %}
-        <table class="table table-bordered table-striped">
-
-            <thead>
-            <tr>
-                <th>Truck Number</th>
-                <th>Insurance</th>
-                <th>Read</th>
-                <th>Remainder</th>
-                <th>remaining_insurance</th>
-                <th>remaining day</th>
-            </tr>
-            </thead>
-
-            <tbody>
-
-            {% for list in notify_insurance %}
-
-                <tr>
-                    <td>{{ list.truck_number }}</td>
-                    <td>{{ list.insurance }}</td>
-
-                    <td>{{ list.read }}</td>
-                    <td>{{ list.remainder }}</td>
-                    <td>{{ list.remaining_insurance }}</td>
-
-                    <td>{{ list.remainded_for_remaining_day }}</td>
-                </tr>
-
-            {% endfor %}
-            </tbody>
-
-        </table>
-
-    {% endif %}
-    {% if notify_fitness %}
-        <table class="table table-bordered table-striped">
-
-            <thead>
-            <tr>
-                <th>Truck Number</th>
-                <th>Fitness</th>
-                <th>Read</th>
-                <th>Remainder</th>
-                <th>remaining_fitness</th>
-                <th>remaining day</th>
-            </tr>
-            </thead>
-
-            <tbody>
-
-            {% for list in notify_fitness %}
-
-                <tr>
-                    <td>{{ list.truck_number }}</td>
-                    <td>{{ list.fitness }}</td>
-
-                    <td>{{ list.read }}</td>
-                    <td>{{ list.remainder }}</td>
-                    <td>{{ list.remaining_fitness }}</td>
-
-                    <td>{{ list.remainded_for_remaining_day }}</td>
-                </tr>
-
-            {% endfor %}
-            </tbody>
-
-        </table>
-
-    {% endif %}
-    {% if notify_pollution %}
-        <table class="table table-bordered table-striped">
-
-            <thead>
-            <tr>
-                <th>Truck Number</th>
-                <th>POllution</th>
-                <th>Read</th>
-                <th>Remainder</th>
-                <th>remaining Fitness</th>
-                <th>remaining day</th>
-            </tr>
-            </thead>
-
-            <tbody>
-
-            {% for list in notify_pollution %}
-
-                <tr>
-                    <td>{{ list.truck_number }}</td>
-                    <td>{{ list.pollution }}</td>
-
-                    <td>{{ list.read }}</td>
-                    <td>{{ list.remainder }}</td>
-                    <td>{{ list.remaining_pollution }}</td>
-
-                    <td>{{ list.remainded_for_remaining_day }}</td>
-                </tr>
-
-            {% endfor %}
-            </tbody>
-
-        </table>
-
-    {% endif %}
+{#    {% if notify_insurance %}#}
+{#        <table class="table table-bordered table-striped">#}
+{##}
+{#            <thead>#}
+{#            <tr>#}
+{#                <th>Truck Number</th>#}
+{#                <th>Insurance</th>#}
+{#                <th>Read</th>#}
+{#                <th>Remainder</th>#}
+{#                <th>remaining_insurance</th>#}
+{#                <th>remaining day</th>#}
+{#            </tr>#}
+{#            </thead>#}
+{##}
+{#            <tbody>#}
+{##}
+{#            {% for list in notify_insurance %}#}
+{##}
+{#                <tr>#}
+{#                    <td>{{ list.truck_number }}</td>#}
+{#                    <td>{{ list.insurance }}</td>#}
+{##}
+{#                    <td>{{ list.read }}</td>#}
+{#                    <td>{{ list.remainder }}</td>#}
+{#                    <td>{{ list.remaining_insurance }}</td>#}
+{##}
+{#                    <td>{{ list.remainded_for_remaining_day }}</td>#}
+{#                </tr>#}
+{##}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{##}
+{#        </table>#}
+{##}
+{#    {% endif %}#}
+{#    {% if notify_fitness %}#}
+{#        <table class="table table-bordered table-striped">#}
+{##}
+{#            <thead>#}
+{#            <tr>#}
+{#                <th>Truck Number</th>#}
+{#                <th>Fitness</th>#}
+{#                <th>Read</th>#}
+{#                <th>Remainder</th>#}
+{#                <th>remaining_fitness</th>#}
+{#                <th>remaining day</th>#}
+{#            </tr>#}
+{#            </thead>#}
+{##}
+{#            <tbody>#}
+{##}
+{#            {% for list in notify_fitness %}#}
+{##}
+{#                <tr>#}
+{#                    <td>{{ list.truck_number }}</td>#}
+{#                    <td>{{ list.fitness }}</td>#}
+{##}
+{#                    <td>{{ list.read }}</td>#}
+{#                    <td>{{ list.remainder }}</td>#}
+{#                    <td>{{ list.remaining_fitness }}</td>#}
+{##}
+{#                    <td>{{ list.remainded_for_remaining_day }}</td>#}
+{#                </tr>#}
+{##}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{##}
+{#        </table>#}
+{##}
+{#    {% endif %}#}
+{#    {% if notify_pollution %}#}
+{#        <table class="table table-bordered table-striped">#}
+{##}
+{#            <thead>#}
+{#            <tr>#}
+{#                <th>Truck Number</th>#}
+{#                <th>POllution</th>#}
+{#                <th>Read</th>#}
+{#                <th>Remainder</th>#}
+{#                <th>remaining Fitness</th>#}
+{#                <th>remaining day</th>#}
+{#            </tr>#}
+{#            </thead>#}
+{##}
+{#            <tbody>#}
+{##}
+{#            {% for list in notify_pollution %}#}
+{##}
+{#                <tr>#}
+{#                    <td>{{ list.truck_number }}</td>#}
+{#                    <td>{{ list.pollution }}</td>#}
+{##}
+{#                    <td>{{ list.read }}</td>#}
+{#                    <td>{{ list.remainder }}</td>#}
+{#                    <td>{{ list.remaining_pollution }}</td>#}
+{##}
+{#                    <td>{{ list.remainded_for_remaining_day }}</td>#}
+{#                </tr>#}
+{##}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{##}
+{#        </table>#}
+{##}
+{#    {% endif %}#}
     {% if notify_insurance or notify_fitness or notify_pollution %}
         <table class="table table-bordered table-striped">
 

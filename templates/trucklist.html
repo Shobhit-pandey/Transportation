@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+  <title>Truck List</title>
+        <style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 {
+    width: 100%;
+    background-color: #f1f1c1;
+}
+</style>
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+    <h3>Truck List</h3>
+    {% if lists %}
+  <table class="table table-bordered table-striped">
+
+		  <thead>
+			<tr>
+			  <th>Truck Number</th>
+			  <th>Insurance</th>
+			  <th>Fitness</th>
+			  <th>Pollution</th>
+			</tr>
+		  </thead>
+
+		  <tbody>
+
+        {% for list in lists %}
+
+  			<tr>
+			  <td>{{ list.truck_number }}</td>
+			  <td>{{ list.insurance }}</td>
+			  <td>{{ list.fitness }}</td>
+			  <td>{{ list.pollution }}</td>
+			</tr>
+
+        {% endfor %}
+		  </tbody>
+
+		</table>
+
+    {% endif %}
+{% endblock %}
+</body>
+</html>

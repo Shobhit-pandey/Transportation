@@ -7,6 +7,9 @@ class TruckLists(models.Model):
     fitness = models.DateField(blank=False, null=False, help_text="Fitness expiry date(YYYY-MM-DD)")
     pollution = models.DateField(blank=False, null=False, help_text="pollution expiry date(YYYY-MM-DD)")
 
+    def __str__(self):
+        return self.truck_number
+
 
 class NotificationInsurance(models.Model):
     truck_number = models.CharField(max_length=10, null=False, blank=False)

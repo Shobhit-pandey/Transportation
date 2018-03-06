@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^list/', views.list, name='list'),
     url(r'^addtruck/', views.addtruck, name='addtruck'),
+    url(r'^import/', views.import_truck, name='import_truck'),
     url(r'^notification/', views.notification, name='notification'),
     url(r'^past-notification/', views.past_notification, name='past_notification'),
     url(r'^notification_insurance/(?P<pk1>[\w-]+)/$', views.notification_insurance_readed, name='notification_insurance_readed'),

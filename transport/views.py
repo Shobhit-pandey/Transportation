@@ -1,8 +1,12 @@
 from datetime import datetime, date
+import csv
+import xlrd
+from pyexcel_xls import get_data
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from transport.forms import AddTruck
+from transport.forms import AddTruck, ImportTruck
 from transport.models import TruckLists, NotificationFitness, NotificationInsurance, NotificationPollution
 
 
@@ -166,6 +170,67 @@ def addtruck(request):
     else:
         form = AddTruck()
     return render(request, 'addtruck.html', {'form': form})
+
+
+def import_truck(request):
+    form = ImportTruck()
+    if request.method == 'POST':
+        form = ImportTruck(request.POST, request.FILES)
+        print("s")
+        if form.is_valid():
+            print("dfs")
+            excel = request.FILES.get('excel',False)
+            print(excel)
+            data = get_data(excel)
+            import json
+            from bson import json_util
+            js = json.dumps(data,default=myconverter)  #default=json_util.default
+            cs = csv.DictReader(excel)
+            print(js)
+            # js = json.loads(js)
+            k=0
+            temp_list=[]
+            temp=''
+            ini = 0
+            start =0
+            for key in range(0,len(js)):
+                if js[key] == '"':
+                    ini+=1
+                    if ini % 2 ==0:
+                        temp_list.append(temp)
+                        temp = ''
+                        if start == 0:
+                            del temp_list[:]
+                        start = start+1
+                    if start>1:
+                        if len(temp_list) == 4:
+                            print(temp_list)
+                            TruckLists.objects.create(
+                                truck_number=temp_list[0], insurance=temp_list[1], fitness=temp_list[2],
+                                pollution=temp_list[3]
+                            )
+                            del temp_list[:]
+                    continue
+                if ini !=0:
+                    if ini % 2 ==1:
+                        temp+=js[key]
+            print(temp_list)
+            # for ad in range(1,len(temp_list)):
+            #     TruckLists.objects.create(
+            #         truck_number=temp_list[ad],insurance=temp_list[ad+1],fitness=temp_list[ad+2],pollution=temp_list[ad+3]
+            #     )
+            #     ad=ad+4
+            # TruckLists.objects.create(**js)
+            return redirect('transport:list')
+    else:
+        form = ImportTruck()
+    return render(request, 'import_truck.html', {'form': form})
+
+
+def myconverter(o):
+    if isinstance(o, date):
+        return o.isoformat()
+    raise TypeError("Unknown type")
 
 
 def notification_insurance_readed(request, pk1):

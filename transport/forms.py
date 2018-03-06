@@ -24,3 +24,7 @@ class ExpiryNotificationPollution(forms.ModelForm):
     class Meta:
         model = NotificationPollution
         exclude = []
+
+
+class ImportTruck(forms.Form):
+    excel = forms.FileField(required=True)
